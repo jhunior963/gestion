@@ -16,4 +16,8 @@ class Grado extends Model
         return $this->belongsTo(Nivel::class);
 
     }
+    public function paralelos()
+    {
+        return $this->hasMany(Paralelo::class);
+    }
 }

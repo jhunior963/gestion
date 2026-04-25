@@ -41,15 +41,19 @@ class ConfiguracionController extends Controller
             $configuracion->correo_electronico = $request->correo_electronico;
 
             if ($request->hasFile('logo')) {
-                //eliminar logo anterior
-                if ($configuracion->logo) {
-                    unlink(public_path($configuracion->logo));
-                 }
-                 $logoPath = $request->file('logo');
-                 $nombreArchivo = time() . '_' . $logoPath->getClientOriginalName();
-                 $rutaDestino = public_path('uploads/logos');
-                 $logoPath->move($rutaDestino, $nombreArchivo);
-                 $configuracion->logo = 'uploads/logos/' . $nombreArchivo;
+                // eliminar logo anterior solo si existe realmente
+                $logoAnterior = public_path($configuracion->logo);
+                if ($configuracion->logo && file_exists($logoAnterior)) {
+                    unlink($logoAnterior);
+                }
+                $logoPath = $request->file('logo');
+                $nombreArchivo = time() . '_' . $logoPath->getClientOriginalName();
+                $rutaDestino = public_path('uploads/logos');
+                if (!file_exists($rutaDestino)) {
+                    mkdir($rutaDestino, 0755, true);
+                }
+                $logoPath->move($rutaDestino, $nombreArchivo);
+                $configuracion->logo = 'uploads/logos/' . $nombreArchivo;
             }
             $configuracion->save();
             return redirect()->route('admin.configuracion.index')
@@ -70,6 +74,9 @@ class ConfiguracionController extends Controller
                 $logoPath = $request->file('logo');
                 $nombreArchivo = time() . '_' . $logoPath->getClientOriginalName();
                 $rutaDestino = public_path('uploads/logos');
+                if (!file_exists($rutaDestino)) {
+                    mkdir($rutaDestino, 0755, true);
+                }
                 $logoPath->move($rutaDestino, $nombreArchivo);
                 $configuracion->logo = 'uploads/logos/' . $nombreArchivo;
             }

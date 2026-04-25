@@ -329,14 +329,29 @@ return [
             'url' => 'admin/grados',
             'icon' => 'fas fa-fw fa-list-alt',
             'classes' => 'bg-blue text-white',
-
-
-
+        ],
+        [
+            'text' => 'Paralelos',
+            'url' => 'admin/paralelos',
+            'icon' => 'fas fa-fw fa-clone',
+            'classes' => 'bg-blue text-white',
         ],
         [
             'text' => 'Turnos',
             'url' => 'admin/turnos',
             'icon' => 'fas fa-fw fa-clock',
+            'classes' => 'bg-blue text-white',
+        ],
+        [
+                'text' => 'Materias',
+                'url' => 'admin/materias',
+                'icon' => 'fas fa-fw fa-book',
+                'classes' => 'bg-blue text-white',
+        ],
+        [
+            'text' => 'Usuarios',
+            'url' => 'admin/usuarios',
+            'icon' => 'fas fa-fw fa-user-check',
             'classes' => 'bg-blue text-white',
         ],
        
