@@ -2,6 +2,87 @@
 
 @section('adminlte_css_pre')
     <link rel="stylesheet" href="{{ asset('vendor/icheck-bootstrap/icheck-bootstrap.min.css') }}">
+
+    <style>
+        body {
+            background: url('https://wallpaperaccess.com/full/3124512.jpg') no-repeat center center/cover;
+        }
+
+        /* Glass effect principal */
+        .card {
+            background: rgba(255, 255, 255, 0.1) !important;
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.2);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+        }
+
+        /* 🔥 FIX IMPORTANTE */
+        .card-body,
+        .card-footer {
+            background: transparent !important;
+            border: none !important;
+        }
+
+        /* Header */
+        .card-header {
+            background: transparent !important;
+            border: none;
+            text-align: center;
+            font-size: 22px;
+            font-weight: bold;
+            color: white !important;
+        }
+
+        /* Inputs */
+        .form-control {
+            background: transparent !important;
+            border: 1px solid rgba(255,255,255,0.4) !important;
+            border-radius: 25px !important;
+            color: white !important;
+        }
+
+        .form-control::placeholder {
+            color: rgba(255,255,255,0.8) !important;
+        }
+
+        .input-group-text {
+            background: transparent !important;
+            border: none !important;
+            color: white !important;
+        }
+
+        /* Botón login */
+        .btn-primary {
+            border-radius: 25px !important;
+            background: white !important;
+            color: black !important;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background: #ddd !important;
+        }
+
+        /* Botón Google */
+        .btn-outline-danger,
+        .btn-light {
+            border-radius: 25px !important;
+        }
+
+        /* Texto */
+        .login-box-msg,
+        label,
+        a {
+            color: white !important;
+        }
+
+        /* Checkbox */
+        .icheck-primary label {
+            color: white !important;
+        }
+    </style>
 @stop
 
 @php
@@ -79,6 +160,11 @@
                     <span class="fas fa-sign-in-alt"></span>
                     {{ __('adminlte::adminlte.sign_in') }}
                 </button>
+            </div>
+            <div class="col-12 mt-2">
+                 <a href="{{ route('google.login') }}" class="btn btn-primary w-100 ">
+                     <i class="fab fa-google"></i> Iniciar sesión con Google
+                </a>
             </div>
         </div>
     </form>

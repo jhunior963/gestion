@@ -24,11 +24,11 @@
                                 <label for="">Logo de la institucion</label>
 
                                     <input type="file" class="form-control" 
-                                    value="{{ old('logo', $configuracion->logo ?? '') }}" name="logo" 
+                                    value="{{ old('logo', $configuracion ? $configuracion->logo : '') }}" name="logo" 
                                     placeholder="Escribir aqui...." onchange="mostrarImagen(event)" accept="image/*">
                                     <br>
                                     <center>
-                                        <img id="preview" src="{{ url($configuracion->logo) }}" style="max-width: 300px; margin-top: 10px;">
+                                        <img id="preview" src="{{ $configuracion && $configuracion->logo ? url($configuracion->logo) : '' }}" style="max-width: 300px; margin-top: 10px;">
                                     </center>
                                 
                                 @error('logo')

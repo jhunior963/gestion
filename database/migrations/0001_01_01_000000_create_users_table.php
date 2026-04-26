@@ -11,13 +11,36 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('users', function (Blueprint $table) {
+        
+            Schema::create('users', function (Blueprint $table) {
             $table->id();
+
+            // Basic Info
             $table->string('name');
             $table->string('email')->unique();
+            $table->string('user_id')->nullable();
+
+            // Social Login (Google)
+            $table->string('google_id')->nullable()->unique();
+            $table->string('provider')->nullable();
+
+            // User Metadata
+            $table->string('join_date')->nullable();
+            $table->string('last_login')->nullable();
+            $table->string('phone_number')->nullable();
+            $table->string('status')->nullable();
+            $table->string('role_name')->nullable();
+            $table->string('avatar')->nullable();
+            $table->string('position')->nullable();
+            $table->string('department')->nullable();
+            $table->string('line_manager')->nullable();
+            $table->string('seconde_line_manager')->nullable();
+
+            // Authentication
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
+            $table->string('password')->nullable(); // nullable para usuarios de Google
             $table->rememberToken();
+
             $table->timestamps();
         });
 
